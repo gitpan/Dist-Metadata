@@ -32,19 +32,19 @@ no_index:
 provides:
   Dist::Metadata:
     file: lib/Dist/Metadata.pm
-    version: 0.901
+    version: 0.902
   Dist::Metadata::Dir:
     file: lib/Dist/Metadata/Dir.pm
-    version: 0.901
+    version: 0.902
   Dist::Metadata::Dist:
     file: lib/Dist/Metadata/Dist.pm
-    version: 0.901
+    version: 0.902
   Dist::Metadata::Struct:
     file: lib/Dist/Metadata/Struct.pm
-    version: 0.901
+    version: 0.902
   Dist::Metadata::Tar:
     file: lib/Dist/Metadata/Tar.pm
-    version: 0.901
+    version: 0.902
 requires:
   Archive::Tar: 0
   CPAN::Meta: 2.1
@@ -65,7 +65,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Metadata
   homepage: http://github.com/magnificent-tears/Dist-Metadata
   repository: http://github.com/magnificent-tears/Dist-Metadata
-version: 0.901
+version: 0.902
 x_Dist_Zilla:
   plugins:
     -

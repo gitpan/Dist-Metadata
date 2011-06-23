@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 BEGIN {
-  $Dist::Metadata::VERSION = '0.901';
+  $Dist::Metadata::VERSION = '0.902';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -85,7 +85,7 @@ sub default_metadata {
     # optional
     no_index => {
       # ignore test and build directories by default
-      directory => [qw( t inc )],
+      directory => [qw( inc t xt )],
     },
     # provides => { package => { file => $file, version => $version } }
   };
@@ -225,7 +225,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.901
+version 0.902
 
 =head1 SYNOPSIS
 
@@ -341,7 +341,10 @@ the meta object's C<no_index> attribute
 (see L<CPAN::Meta/should_index_file>
 and  L<CPAN::Meta/should_index_package>).
 By default this ignores any files found in
-F<t/> or F<inc/> directories.
+F<inc/>,
+F<t/>,
+or F<xt/>
+directories.
 
 =head2 load_meta
 
@@ -415,6 +418,14 @@ Guess main module from dist name if no packages can be found
 =item *
 
 Review code to ensure proper, consistent use of L<File::Spec>
+
+=item *
+
+Use L<CPAN::DistnameInfo> to parse name/version from files
+
+=item *
+
+Add change log info (L<CPAN::Changes>)?
 
 =back
 

@@ -1,5 +1,18 @@
 Revision history for Dist-Metadata
 
+0.902     2011-06-23T05:51:42Z
+
+  [Fixes]
+  - Change determine_packages to always return paths in unix format
+    (as required by CPAN::Meta::Spec)
+  - Fix regexp path bugs on windows
+
+  [Enhancements]
+  - Include 'xt/' in the default no_index:directory list
+
+  [Documentation]
+  - Add items to pod TODO list
+
 0.901     2011-06-22T01:22:07Z
 
   - Initial release

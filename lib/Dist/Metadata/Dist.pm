@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.901';
+  $Dist::Metadata::Dist::VERSION = '0.902';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -162,10 +162,16 @@ sub packages_from_directory {
 
   my $provides = try {
     # M::M::p_v_f_d expects full paths for \@files
-    Module::Metadata->package_versions_from_directory($dir,
+    my $packages = Module::Metadata->package_versions_from_directory($dir,
       # FIXME: $self->file_spec->splitpath($_) (write tests first)
       [map { File::Spec->catfile($dir, $_) } @files]
     );
+    while ( my ($pack, $pv) = each %$packages ) {
+      # CPAN::Meta expects file paths in Unix format
+      $pv->{file} =
+        File::Spec::Unix->catfile( $self->file_spec->splitdir( $pv->{file} ) );
+    }
+    $packages; # return
   }
   catch {
     carp("Failed to determine packages: $_[0]");
@@ -218,8 +224,10 @@ sub remove_root_dir {
   my ($self, @files) = @_;
   return unless @files;
 
+  # FIXME: can we use File::Spec for these regexp's instead of [\\/] ?
+
   # grab the root dir from the first file
-  $files[0] =~ m{^([^/]+)/}
+  $files[0] =~ m{^([^\\/]+)[\\/]}
     # if not matched quit now
     or return (undef, @files);
 
@@ -229,7 +237,7 @@ sub remove_root_dir {
   # strip $dir from each file
   for (@files) {
 
-    m{^\Q$dir\E/(.+)$}
+    m{^\Q$dir\E[\\/](.+)$}
       # if the match failed they're not all under the same root so just return now
       or return (undef, @files);
 
@@ -283,7 +291,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.901
+version 0.902
 
 =head1 SYNOPSIS
 
