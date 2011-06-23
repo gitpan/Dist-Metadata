@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 BEGIN {
-  $Dist::Metadata::Struct::VERSION = '0.902';
+  $Dist::Metadata::Struct::VERSION = '0.903';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -20,7 +20,7 @@ BEGIN {
 # ABSTRACT: Enable Dist::Metadata for a data structure
 
 use Carp qw(croak carp); # core
-use File::Spec::Unix;    # core
+use File::Spec::Unix (); # core
 use parent 'Dist::Metadata::Dist';
 
 push(@Dist::Metadata::CARP_NOT, __PACKAGE__);
@@ -73,7 +73,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.902
+version 0.903
 
 =head1 SYNOPSIS
 

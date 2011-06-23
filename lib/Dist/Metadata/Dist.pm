@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.902';
+  $Dist::Metadata::Dist::VERSION = '0.903';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -20,6 +20,7 @@ BEGIN {
 
 use Carp qw(croak carp);     # core
 use File::Spec ();           # core
+use File::Spec::Unix ();     # core
 use Try::Tiny 0.09;
 
 
@@ -291,7 +292,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.902
+version 0.903
 
 =head1 SYNOPSIS
 
