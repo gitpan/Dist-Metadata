@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.903';
+  $Dist::Metadata::Dist::VERSION = '0.904';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -169,8 +169,9 @@ sub packages_from_directory {
     );
     while ( my ($pack, $pv) = each %$packages ) {
       # CPAN::Meta expects file paths in Unix format
+      # since M::M::p_v_f_d reads from physical dir use base File::Spec to split
       $pv->{file} =
-        File::Spec::Unix->catfile( $self->file_spec->splitdir( $pv->{file} ) );
+        File::Spec::Unix->catfile( File::Spec->splitdir( $pv->{file} ) );
     }
     $packages; # return
   }
@@ -292,7 +293,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.903
+version 0.904
 
 =head1 SYNOPSIS
 

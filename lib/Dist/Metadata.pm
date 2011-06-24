@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 BEGIN {
-  $Dist::Metadata::VERSION = '0.903';
+  $Dist::Metadata::VERSION = '0.904';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -225,7 +225,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.903
+version 0.904
 
 =head1 SYNOPSIS
 
@@ -417,6 +417,10 @@ Guess main module from dist name if no packages can be found
 
 =item *
 
+Determine abstract?
+
+=item *
+
 Review code to ensure proper, consistent use of L<File::Spec>
 
 =item *
@@ -426,6 +430,10 @@ Use L<CPAN::DistnameInfo> to parse name/version from files
 =item *
 
 Add change log info (L<CPAN::Changes>)?
+
+=item *
+
+Subclass as C<CPAN::Dist::Metadata> just so that it has C<CPAN> in the name?
 
 =back
 

@@ -71,23 +71,23 @@
    "provides" : {
       "Dist::Metadata" : {
          "file" : "lib/Dist/Metadata.pm",
-         "version" : "0.903"
+         "version" : "0.904"
       },
       "Dist::Metadata::Dir" : {
          "file" : "lib/Dist/Metadata/Dir.pm",
-         "version" : "0.903"
+         "version" : "0.904"
       },
       "Dist::Metadata::Dist" : {
          "file" : "lib/Dist/Metadata/Dist.pm",
-         "version" : "0.903"
+         "version" : "0.904"
       },
       "Dist::Metadata::Struct" : {
          "file" : "lib/Dist/Metadata/Struct.pm",
-         "version" : "0.903"
+         "version" : "0.904"
       },
       "Dist::Metadata::Tar" : {
          "file" : "lib/Dist/Metadata/Tar.pm",
-         "version" : "0.903"
+         "version" : "0.904"
       }
    },
    "release_status" : "stable",
@@ -103,7 +103,7 @@
          "web" : "http://github.com/magnificent-tears/Dist-Metadata"
       }
    },
-   "version" : "0.903",
+   "version" : "0.904",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
