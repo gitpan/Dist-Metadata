@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 BEGIN {
-  $Dist::Metadata::Dir::VERSION = '0.904';
+  $Dist::Metadata::Dir::VERSION = '0.910';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -21,7 +21,7 @@ BEGIN {
 
 use Carp qw(croak carp);    # core
 use File::Find ();          # core
-use File::Spec ();          # core
+use Path::Class 0.24 ();
 use parent 'Dist::Metadata::Dist';
 
 push(@Dist::Metadata::CARP_NOT, __PACKAGE__);
@@ -31,8 +31,10 @@ sub new {
   my $class = shift;
   my $self = $class->SUPER::new(@_);
 
-  # chop trailing slash if present
-  $self->{dir} =~ s{/*$}{};
+  # fix up dir (for example chop trailing slash if present)
+  $self->{dir} = $self->path_class_dir->new($self->{dir})->stringify;
+
+  # TODO: croak if not -d $self->dir
 
   return $self;
 }
@@ -59,7 +61,9 @@ sub extract_into {
 
 sub file_content {
   my ($self, $file) = @_;
-  my $path = File::Spec->catfile($self->{dir}, $self->full_path($file));
+  # This is a directory so file spec will always be native
+  my $path = $self->path_class_file
+    ->new( $self->{dir}, $self->full_path($file) )->stringify;
 
   open(my $fh, '<', $path)
     or croak "Failed to open file '$path': $!";
@@ -77,7 +81,7 @@ sub find_files {
   File::Find::find(
     {
       wanted => sub {
-        push @files, File::Spec->abs2rel($_, $dir)
+        push @files, $self->path_class_file->new($_)->relative($dir)->stringify
           if -f $_;
       },
       no_chdir => 1
@@ -93,7 +97,7 @@ sub physical_directory {
   my ($self) = @_;
 
   # go into root dir if there is one
-  return File::Spec->catdir($self->{dir}, $self->{root})
+  return $self->path_class_dir->new($self->{dir}, $self->{root})->stringify
     if $self->{root};
 
   return $self->{dir};
@@ -113,7 +117,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.904
+version 0.910
 
 =head1 SYNOPSIS
 

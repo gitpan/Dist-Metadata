@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Information about a perl module distribution',
   'AUTHOR' => 'Randy Stauner <rwstauner@cpan.org>',
   'BUILD_REQUIRES' => {
+    'File::Spec' => '0',
     'ExtUtils::MakeMaker' => '6.30',
     'Test::Fatal' => '0',
     'Test::MockObject' => '1.09',
@@ -31,16 +32,16 @@ my %WriteMakefileArgs = (
     'File::Basename' => '0',
     'File::Find' => '0',
     'File::Path' => '0',
-    'File::Spec' => '0',
-    'File::Spec::Unix' => '0',
+    'File::Spec::Native' => '1.002',
     'File::Temp' => '0.19',
     'List::Util' => '0',
     'Module::Metadata' => '0',
+    'Path::Class' => '0.24',
     'Try::Tiny' => '0.09',
     'constant' => '0',
     'parent' => '0'
   },
-  'VERSION' => '0.904',
+  'VERSION' => '0.910',
   'test' => {
     'TESTS' => 't/*.t'
   }

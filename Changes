@@ -1,5 +1,23 @@
 Revision history for Dist-Metadata
 
+0.910     2011-07-03T00:06:00Z
+
+  [Fixes]
+  - Work around weird, possible perl bug (described at http://bit.ly/mhaQ4x)
+    that made Struct->file_content return undef for IO-like objects
+
+  [Prereqs]
+  - use Path::Class instead of File::Spec
+  - ensure File::Spec::Native is available
+
+  [Documentation]
+  - Clarify details of module's purpose in Pod Description
+
+  [Testing]
+  - Add dist format tests
+  - Report version of JSON::PP (if any) installed to help debug
+    troublesome smoke testing environments
+
 0.904     2011-06-24T06:09:23Z
 
   - Fix path mismatch for "provides" when using Module::Metadata on Win32

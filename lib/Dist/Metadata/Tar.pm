@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Tar;
 BEGIN {
-  $Dist::Metadata::Tar::VERSION = '0.904';
+  $Dist::Metadata::Tar::VERSION = '0.910';
 }
 BEGIN {
   $Dist::Metadata::Tar::AUTHORITY = 'cpan:RWSTAUNER';
@@ -21,7 +21,6 @@ BEGIN {
 
 use Archive::Tar ();
 use Carp qw(croak carp); # core
-use File::Spec::Unix (); # core
 use Try::Tiny 0.09;
 use parent 'Dist::Metadata::Dist';
 
@@ -31,7 +30,7 @@ push(@Dist::Metadata::CARP_NOT, __PACKAGE__);
 sub required_attribute { 'file' }
 
 
-sub default_file_spec { 'File::Spec::Unix' }
+sub default_file_spec { 'Unix' }
 
 
 sub determine_name_and_version {
@@ -90,7 +89,7 @@ Dist::Metadata::Tar - Enable Dist::Metadata for tar files
 
 =head1 VERSION
 
-version 0.904
+version 0.910
 
 =head1 SYNOPSIS
 
@@ -116,7 +115,7 @@ Accepts a single C<file> argument that should be a path to a F<tar.gz> file.
 
 =head2 default_file_spec
 
-Returns L<File::Spec::Unix> since tar files must be in unix format.
+Returns C<Unix> since tar files must be in unix format.
 
 =head2 determine_name_and_version
 

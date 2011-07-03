@@ -7,6 +7,7 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   'build_requires' => {
+    'File::Spec' => '0',
     'Module::Build' => '0.3601',
     'Test::Fatal' => '0',
     'Test::MockObject' => '1.09',
@@ -20,7 +21,7 @@ my %module_build_args = (
     'Randy Stauner <rwstauner@cpan.org>'
   ],
   'dist_name' => 'Dist-Metadata',
-  'dist_version' => '0.904',
+  'dist_version' => '0.910',
   'license' => 'perl',
   'module_name' => 'Dist::Metadata',
   'recommends' => {},
@@ -32,11 +33,11 @@ my %module_build_args = (
     'File::Basename' => '0',
     'File::Find' => '0',
     'File::Path' => '0',
-    'File::Spec' => '0',
-    'File::Spec::Unix' => '0',
+    'File::Spec::Native' => '1.002',
     'File::Temp' => '0.19',
     'List::Util' => '0',
     'Module::Metadata' => '0',
+    'Path::Class' => '0.24',
     'Try::Tiny' => '0.09',
     'constant' => '0',
     'parent' => '0',

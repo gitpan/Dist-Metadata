@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 BEGIN {
-  $Dist::Metadata::Struct::VERSION = '0.904';
+  $Dist::Metadata::Struct::VERSION = '0.910';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -20,7 +20,6 @@ BEGIN {
 # ABSTRACT: Enable Dist::Metadata for a data structure
 
 use Carp qw(croak carp); # core
-use File::Spec::Unix (); # core
 use parent 'Dist::Metadata::Dist';
 
 push(@Dist::Metadata::CARP_NOT, __PACKAGE__);
@@ -29,21 +28,23 @@ push(@Dist::Metadata::CARP_NOT, __PACKAGE__);
 sub required_attribute { 'files' }
 
 
-sub default_file_spec { 'File::Spec::Unix' }
+sub default_file_spec { 'Unix' }
 
 
 sub file_content {
   my ($self, $file) = @_;
+  # TODO: should we croak if not found?  would be consistent with Dir
   my $content = $self->{files}{ $self->full_path($file) };
 
   # 5.10: given(ref($content))
 
   if( my $ref = ref $content ){
+    local $/; # do this here because of a weird bug found: http://bit.ly/mhaQ4x
     return $ref eq 'SCALAR'
       # allow a scalar ref
       ? $$content
       # or an IO-like object
-      : do { local $/; $content->getline; }
+      : $content->getline;
   }
   # else a simple string
   return $content;
@@ -52,9 +53,6 @@ sub file_content {
 
 sub find_files {
   my ($self) = @_;
-
-  # place an entry in the hash for consistency with other formats
-  $self->{dir} = '';
 
   return keys %{ $self->{files} };
 }
@@ -73,7 +71,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.904
+version 0.910
 
 =head1 SYNOPSIS
 
@@ -110,7 +108,7 @@ Content can be a string, a reference to a string, or an IO object.
 
 =head2 default_file_spec
 
-L<File::Spec::Unix> is the default for consistency/simplicity
+C<Unix> is the default for consistency/simplicity
 but C<file_spec> can be overridden in the constructor.
 
 =head2 file_content

@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 BEGIN {
-  $Dist::Metadata::VERSION = '0.904';
+  $Dist::Metadata::VERSION = '0.910';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -58,6 +58,10 @@ sub dist {
     elsif ( my $file = $self->{file} ){
       require Dist::Metadata::Tar;
       $dist = Dist::Metadata::Tar->new(file => $file);
+    }
+    else {
+      # new() checks for one and dies without so we shouldn't get here
+      croak q[No dist format parameters found!];
     }
     $dist; # return
   };
@@ -225,7 +229,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.904
+version 0.910
 
 =head1 SYNOPSIS
 
@@ -240,8 +244,26 @@ version 0.904
 
 =head1 DESCRIPTION
 
-This is sort of a companion to L<Module::Metadata>.
-It provides an interface for getting information about a distribution.
+This module provides an easy interface for getting various metadata
+about a Perl module distribution.
+
+It takes care of the common logic of:
+
+=over 4
+
+=item *
+
+reading a tar file (L<Archive::Tar>)
+
+=item *
+
+finding and reading the correct META file if the distribution contains one (L<CPAN::Meta>)
+
+=item *
+
+and determining some of the metadata if there is no META file (L<Module::Metadata>)
+
+=back
 
 This is mostly a wrapper around L<CPAN::Meta> providing an easy interface
 to find and load the meta file from a F<tar.gz> file.
@@ -249,9 +271,6 @@ A dist can also be represented by a directory or merely a structure of data.
 
 If the dist does not contain a meta file
 the module will attempt to determine some of that data from the dist.
-
-The current actions of this module are inspired by
-what I believe the current PAUSE indexer does.
 
 B<NOTE>: This interface is still being defined.
 Please submit any suggestions or concerns.
@@ -421,10 +440,6 @@ Determine abstract?
 
 =item *
 
-Review code to ensure proper, consistent use of L<File::Spec>
-
-=item *
-
 Use L<CPAN::DistnameInfo> to parse name/version from files
 
 =item *
@@ -434,6 +449,10 @@ Add change log info (L<CPAN::Changes>)?
 =item *
 
 Subclass as C<CPAN::Dist::Metadata> just so that it has C<CPAN> in the name?
+
+=item *
+
+Use L<File::Find::Rule::Perl>?
 
 =back
 
