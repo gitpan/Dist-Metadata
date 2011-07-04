@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.910';
+  $Dist::Metadata::Dist::VERSION = '0.911';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -325,7 +325,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.910
+version 0.911
 
 =head1 SYNOPSIS
 

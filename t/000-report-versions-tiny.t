@@ -57,6 +57,7 @@ eval { $v .= pmver('File::Path','any version') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('File::Spec::Native','1.002') };
 eval { $v .= pmver('File::Temp','0.19') };
+eval { $v .= pmver('JSON','2.27') };
 eval { $v .= pmver('JSON::PP','2.27103') };
 eval { $v .= pmver('List::Util','any version') };
 eval { $v .= pmver('Module::Build','0.3601') };

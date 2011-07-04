@@ -1,5 +1,9 @@
 Revision history for Dist-Metadata
 
+0.911     2011-07-04T22:10:24Z
+
+  - Fix test to use non-os specific paths in regexp
+
 0.910     2011-07-03T00:06:00Z
 
   [Fixes]
