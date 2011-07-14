@@ -12,14 +12,14 @@ use warnings;
 
 package Dist::Metadata::Tar;
 BEGIN {
-  $Dist::Metadata::Tar::VERSION = '0.911';
+  $Dist::Metadata::Tar::VERSION = '0.912';
 }
 BEGIN {
   $Dist::Metadata::Tar::AUTHORITY = 'cpan:RWSTAUNER';
 }
 # ABSTRACT: Enable Dist::Metadata for tar files
 
-use Archive::Tar ();
+use Archive::Tar 1 ();   # 0.07 isn't good enough
 use Carp qw(croak carp); # core
 use Try::Tiny 0.09;
 use parent 'Dist::Metadata::Dist';
@@ -89,7 +89,7 @@ Dist::Metadata::Tar - Enable Dist::Metadata for tar files
 
 =head1 VERSION
 
-version 0.911
+version 0.912
 
 =head1 SYNOPSIS
 

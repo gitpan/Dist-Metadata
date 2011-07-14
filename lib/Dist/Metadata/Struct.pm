@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 BEGIN {
-  $Dist::Metadata::Struct::VERSION = '0.911';
+  $Dist::Metadata::Struct::VERSION = '0.912';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -39,7 +39,7 @@ sub file_content {
   # 5.10: given(ref($content))
 
   if( my $ref = ref $content ){
-    local $/; # do this here because of a weird bug found: http://bit.ly/mhaQ4x
+    local $/; # do this here because of perl bug prior to perl 5.15 (7c2d9d0)
     return $ref eq 'SCALAR'
       # allow a scalar ref
       ? $$content
@@ -71,7 +71,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.911
+version 0.912
 
 =head1 SYNOPSIS
 

@@ -26,7 +26,8 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Dist::Metadata',
   'PREREQ_PM' => {
-    'Archive::Tar' => '0',
+    'Archive::Tar' => '1',
+    'CPAN::DistnameInfo' => '0.12',
     'CPAN::Meta' => '2.1',
     'Carp' => '0',
     'File::Basename' => '0',
@@ -41,7 +42,7 @@ my %WriteMakefileArgs = (
     'constant' => '0',
     'parent' => '0'
   },
-  'VERSION' => '0.911',
+  'VERSION' => '0.912',
   'test' => {
     'TESTS' => 't/*.t'
   }

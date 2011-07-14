@@ -48,7 +48,8 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('Archive::Tar','any version') };
+eval { $v .= pmver('Archive::Tar','1') };
+eval { $v .= pmver('CPAN::DistnameInfo','0.12') };
 eval { $v .= pmver('CPAN::Meta','2.1') };
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('File::Basename','any version') };

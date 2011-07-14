@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 BEGIN {
-  $Dist::Metadata::VERSION = '0.911';
+  $Dist::Metadata::VERSION = '0.912';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -229,7 +229,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.911
+version 0.912
 
 =head1 SYNOPSIS
 
@@ -261,7 +261,7 @@ finding and reading the correct META file if the distribution contains one (L<CP
 
 =item *
 
-and determining some of the metadata if there is no META file (L<Module::Metadata>)
+and determining some of the metadata if there is no META file (L<Module::Metadata>, L<CPAN::DistnameInfo>)
 
 =back
 
@@ -440,10 +440,6 @@ Determine abstract?
 
 =item *
 
-Use L<CPAN::DistnameInfo> to parse name/version from files
-
-=item *
-
 Add change log info (L<CPAN::Changes>)?
 
 =item *
@@ -464,11 +460,15 @@ Use L<File::Find::Rule::Perl>?
 
 =item *
 
+L<CPAN::Meta>
+
+=item *
+
 L<Module::Metadata>
 
 =item *
 
-L<CPAN::Meta>
+L<CPAN::DistnameInfo>
 
 =back
 
@@ -560,9 +560,9 @@ progress on the request by the system.
 =head2 Source Code
 
 
-L<http://github.com/magnificent-tears/Dist-Metadata>
+L<http://github.com/rwstauner/Dist-Metadata>
 
-  git clone http://github.com/magnificent-tears/Dist-Metadata
+  git clone http://github.com/rwstauner/Dist-Metadata
 
 =head1 AUTHOR
 

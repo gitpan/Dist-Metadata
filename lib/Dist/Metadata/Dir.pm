@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 BEGIN {
-  $Dist::Metadata::Dir::VERSION = '0.911';
+  $Dist::Metadata::Dir::VERSION = '0.912';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -44,8 +44,10 @@ sub required_attribute { 'dir' }
 
 sub determine_name_and_version {
   my ($self) = @_;
+  # 'root' may be more accurate than 'dir'
+  $self->SUPER::determine_name_and_version();
   $self->set_name_and_version( $self->parse_name_and_version( $self->dir ) );
-  return $self->SUPER::determine_name_and_version();
+  return;
 }
 
 
@@ -117,7 +119,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.911
+version 0.912
 
 =head1 SYNOPSIS
 

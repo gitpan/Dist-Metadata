@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.911';
+  $Dist::Metadata::Dist::VERSION = '0.912';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -19,6 +19,7 @@ BEGIN {
 # ABSTRACT: Base class for format-specific implementations
 
 use Carp qw(croak carp);     # core
+use CPAN::DistnameInfo 0.12 ();
 use Path::Class 0.24 ();
 use Try::Tiny 0.09;
 
@@ -217,6 +218,7 @@ sub parse_name_and_version {
   my ($self, $path) = @_;
   my ( $name, $version );
   if ( $path ){
+    # try a simple regexp first
     $path =~ m!
       ([^\\/]+)             # name (anything below final directory)
       -                     # separator
@@ -227,6 +229,25 @@ sub parse_name_and_version {
       $
     !x and
       ( $name, $version ) = ( $1, $2 );
+
+    # attempt to improve data with CPAN::DistnameInfo (but ignore any errors)
+    # TODO: also grab maturity and cpanid ?
+    # release_status = $dist->maturity eq 'released' ? 'stable' : 'unstable';
+    # -(TRIAL|RC) => 'testing', '_' => 'unstable'
+    eval {
+      my $dnifile = $path;
+      # if it doesn't appear to have an extension fake one to help DistnameInfo
+      $dnifile .= '.tar.gz' unless $dnifile =~ /\.[a-z]\w+$/;
+      my $dni  = CPAN::DistnameInfo->new($dnifile);
+      my $dni_name    = $dni->dist;
+      my $dni_version = $dni->version;
+      # if dni matched both name and version, or previous regexp didn't match
+      if ( $dni_name && $dni_version || !$name ) {
+        $name    = $dni_name    if $dni_name;
+        $version = $dni_version if $dni_version;
+      }
+    };
+    warn $@ if $@;
   }
   return ($name, $version);
 }
@@ -325,7 +346,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.911
+version 0.912
 
 =head1 SYNOPSIS
 
