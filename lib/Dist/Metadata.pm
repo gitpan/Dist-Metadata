@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 BEGIN {
-  $Dist::Metadata::VERSION = '0.912';
+  $Dist::Metadata::VERSION = '0.913';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -229,7 +229,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.912
+version 0.913
 
 =head1 SYNOPSIS
 
@@ -560,9 +560,9 @@ progress on the request by the system.
 =head2 Source Code
 
 
-L<http://github.com/rwstauner/Dist-Metadata>
+L<https://github.com/rwstauner/Dist-Metadata>
 
-  git clone http://github.com/rwstauner/Dist-Metadata
+  git clone https://github.com/rwstauner/Dist-Metadata
 
 =head1 AUTHOR
 

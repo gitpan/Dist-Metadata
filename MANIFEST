@@ -18,7 +18,6 @@ corpus/Dist-Metadata-Test-NoMetaFile-0.1/README
 corpus/Dist-Metadata-Test-NoMetaFile-0.1/lib/Dist/Metadata/Test/NoMetaFile.pm
 corpus/Dist-Metadata-Test-NoMetaFile-0.1/lib/Dist/Metadata/Test/NoMetaFile/PM.pm
 corpus/Dist-Metadata-Test-SubDir-1.5.tar.gz
-corpus/make_dists
 corpus/noroot.tar.gz
 corpus/noroot/README
 corpus/noroot/lib/Dist/Metadata/Test/NoRoot.pm

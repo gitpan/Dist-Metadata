@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.912';
+  $Dist::Metadata::Dist::VERSION = '0.913';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -88,7 +88,6 @@ sub extract_into {
 
   my @disk_files;
   foreach my $file (@files) {
-    # FIXME: this foreign_file currently only works b/c Dir doesn't use this method
     my $ff = $self->path_class_file->new_foreign( $self->file_spec, $file );
     # Translate dist format (relative path) to disk/OS format and prepend $dir.
     # This dir_list + basename hack is probably ok because the paths in a dist
@@ -235,9 +234,12 @@ sub parse_name_and_version {
     # release_status = $dist->maturity eq 'released' ? 'stable' : 'unstable';
     # -(TRIAL|RC) => 'testing', '_' => 'unstable'
     eval {
-      my $dnifile = $path;
+      # DistnameInfo expects any directories in unix format (thanks jeroenl)
+      my $dnifile = $self->path_class_file
+        ->new($path)->as_foreign('Unix')->stringify;
       # if it doesn't appear to have an extension fake one to help DistnameInfo
       $dnifile .= '.tar.gz' unless $dnifile =~ /\.[a-z]\w+$/;
+
       my $dni  = CPAN::DistnameInfo->new($dnifile);
       my $dni_name    = $dni->dist;
       my $dni_version = $dni->version;
@@ -346,7 +348,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.912
+version 0.913
 
 =head1 SYNOPSIS
 
