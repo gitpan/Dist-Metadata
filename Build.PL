@@ -21,7 +21,7 @@ my %module_build_args = (
     'Randy Stauner <rwstauner@cpan.org>'
   ],
   'dist_name' => 'Dist-Metadata',
-  'dist_version' => '0.913',
+  'dist_version' => '0.914',
   'license' => 'perl',
   'module_name' => 'Dist::Metadata',
   'recommends' => {},
@@ -33,7 +33,6 @@ my %module_build_args = (
     'Carp' => '0',
     'File::Basename' => '0',
     'File::Find' => '0',
-    'File::Path' => '0',
     'File::Spec::Native' => '1.002',
     'File::Temp' => '0.19',
     'List::Util' => '0',

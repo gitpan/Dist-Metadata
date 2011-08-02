@@ -54,7 +54,6 @@ eval { $v .= pmver('CPAN::Meta','2.1') };
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('File::Basename','any version') };
 eval { $v .= pmver('File::Find','any version') };
-eval { $v .= pmver('File::Path','any version') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('File::Spec::Native','1.002') };
 eval { $v .= pmver('File::Temp','0.19') };

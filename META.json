@@ -49,7 +49,6 @@
             "Carp" : 0,
             "File::Basename" : 0,
             "File::Find" : 0,
-            "File::Path" : 0,
             "File::Spec::Native" : "1.002",
             "File::Temp" : "0.19",
             "List::Util" : 0,
@@ -73,23 +72,23 @@
    "provides" : {
       "Dist::Metadata" : {
          "file" : "lib/Dist/Metadata.pm",
-         "version" : "0.913"
+         "version" : "0.914"
       },
       "Dist::Metadata::Dir" : {
          "file" : "lib/Dist/Metadata/Dir.pm",
-         "version" : "0.913"
+         "version" : "0.914"
       },
       "Dist::Metadata::Dist" : {
          "file" : "lib/Dist/Metadata/Dist.pm",
-         "version" : "0.913"
+         "version" : "0.914"
       },
       "Dist::Metadata::Struct" : {
          "file" : "lib/Dist/Metadata/Struct.pm",
-         "version" : "0.913"
+         "version" : "0.914"
       },
       "Dist::Metadata::Tar" : {
          "file" : "lib/Dist/Metadata/Tar.pm",
-         "version" : "0.913"
+         "version" : "0.914"
       }
    },
    "release_status" : "stable",
@@ -105,13 +104,13 @@
          "web" : "https://github.com/rwstauner/Dist-Metadata"
       }
    },
-   "version" : "0.913",
+   "version" : "0.914",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@Author::RWSTAUNER/Git::NextVersion",
-            "version" : "1.111590"
+            "version" : "1.112070"
          },
          {
             "class" : "Dist::Zilla::Plugin::GenerateFile",
@@ -381,22 +380,22 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "@Author::RWSTAUNER/@Git/Check",
-            "version" : "1.111590"
+            "version" : "1.112070"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "name" : "@Author::RWSTAUNER/@Git/Commit",
-            "version" : "1.111590"
+            "version" : "1.112070"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@Author::RWSTAUNER/@Git/Tag",
-            "version" : "1.111590"
+            "version" : "1.112070"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@Author::RWSTAUNER/@Git/Push",
-            "version" : "1.111590"
+            "version" : "1.112070"
          },
          {
             "class" : "Dist::Zilla::Plugin::InstallRelease",

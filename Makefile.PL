@@ -32,7 +32,6 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'File::Basename' => '0',
     'File::Find' => '0',
-    'File::Path' => '0',
     'File::Spec::Native' => '1.002',
     'File::Temp' => '0.19',
     'List::Util' => '0',
@@ -42,7 +41,7 @@ my %WriteMakefileArgs = (
     'constant' => '0',
     'parent' => '0'
   },
-  'VERSION' => '0.913',
+  'VERSION' => '0.914',
   'test' => {
     'TESTS' => 't/*.t'
   }

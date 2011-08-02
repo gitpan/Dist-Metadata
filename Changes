@@ -1,5 +1,10 @@
 Revision history for Dist-Metadata
 
+0.914     2011-08-02T16:01:46Z
+
+  - Use Path::Class::Dir's mkpath for simplicity/compatibility.
+    Closes RT 69961.  Thanks to MELEZHIK for reporting.
+
 0.913     2011-07-19T21:15:24Z
 
   - Pass paths to CPAN::DistnameInfo in Unix format.

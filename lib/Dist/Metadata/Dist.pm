@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.913';
+  $Dist::Metadata::Dist::VERSION = '0.914';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -83,7 +83,6 @@ sub extract_into {
   @files = $self->list_files
     unless @files;
 
-  require File::Path;
   require File::Basename;
 
   my @disk_files;
@@ -95,8 +94,7 @@ sub extract_into {
     my $path = $self->path_class_file
       ->new( $dir, $ff->dir->dir_list, $ff->basename );
 
-    # legacy mkpath interface (should be compatible with any version installed)
-    File::Path::mkpath( $path->dir, 0, oct(700) );
+    $path->dir->mkpath(0, oct(700));
 
     my $full_path = $path->stringify;
     open(my $fh, '>', $full_path)
@@ -348,7 +346,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.913
+version 0.914
 
 =head1 SYNOPSIS
 
