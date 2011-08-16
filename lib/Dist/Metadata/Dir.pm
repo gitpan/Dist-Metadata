@@ -11,8 +11,8 @@ use strict;
 use warnings;
 
 package Dist::Metadata::Dir;
-BEGIN {
-  $Dist::Metadata::Dir::VERSION = '0.914';
+{
+  $Dist::Metadata::Dir::VERSION = '0.915';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -111,7 +111,7 @@ sub physical_directory {
 __END__
 =pod
 
-=for :stopwords Randy Stauner TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
 =head1 NAME
 
@@ -119,7 +119,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.914
+version 0.915
 
 =head1 SYNOPSIS
 

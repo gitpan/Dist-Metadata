@@ -10,8 +10,8 @@ use strict;
 use warnings;
 
 package Dist::Metadata::Dist;
-BEGIN {
-  $Dist::Metadata::Dist::VERSION = '0.914';
+{
+  $Dist::Metadata::Dist::VERSION = '0.915';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -338,7 +338,7 @@ sub set_name_and_version {
 __END__
 =pod
 
-=for :stopwords Randy Stauner TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
 =head1 NAME
 
@@ -346,7 +346,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.914
+version 0.915
 
 =head1 SYNOPSIS
 

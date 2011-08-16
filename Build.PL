@@ -21,7 +21,7 @@ my %module_build_args = (
     'Randy Stauner <rwstauner@cpan.org>'
   ],
   'dist_name' => 'Dist-Metadata',
-  'dist_version' => '0.914',
+  'dist_version' => '0.915',
   'license' => 'perl',
   'module_name' => 'Dist::Metadata',
   'recommends' => {},

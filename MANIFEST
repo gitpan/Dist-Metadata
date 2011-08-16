@@ -64,6 +64,7 @@ t/package_versions.t
 t/struct.t
 t/tar.t
 xt/author/critic.t
+xt/author/pod-spell.t
 xt/release/cpan-changes.t
 xt/release/dist-manifest.t
 xt/release/distmeta.t
@@ -75,7 +76,6 @@ xt/release/mojibake.t
 xt/release/no-tabs.t
 xt/release/pod-coverage.t
 xt/release/pod-linkcheck.t
-xt/release/pod-spell.t
 xt/release/pod-syntax.t
 xt/release/synopsis.t
 xt/release/test-version.t

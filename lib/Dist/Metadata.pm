@@ -11,8 +11,8 @@ use strict;
 use warnings;
 
 package Dist::Metadata;
-BEGIN {
-  $Dist::Metadata::VERSION = '0.914';
+{
+  $Dist::Metadata::VERSION = '0.915';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -122,7 +122,7 @@ sub determine_metadata {
 
 
 sub determine_packages {
-  # meta must be passed because to avoid infinite loop
+  # meta must be passed to avoid infinite loop
   my ( $self, $meta ) = @_;
   # if not passed in, use defaults (we just want the 'no_index' property)
   $meta ||= $self->meta_from_struct( $self->determine_metadata );
@@ -132,14 +132,11 @@ sub determine_packages {
   # TODO: should we limit packages to lib/ if it exists?
   # my @lib = grep { m#^lib/# } @files; @files = @lib if @lib;
 
-  unless (@files) {
-    warn("No perl files found in distribution\n");
-    return {};
-  }
+  return {} if not @files;
 
   my $packages = $self->dist->determine_packages(@files);
 
-  # remove any packages that should not be indexed (if any)
+  # remove any packages that should not be indexed
   foreach my $pack ( keys %$packages ) {
     delete $packages->{$pack}
       if !$meta->should_index_package($pack);
@@ -220,8 +217,9 @@ sub package_versions {
 __END__
 =pod
 
-=for :stopwords Randy Stauner TODO dist dists dir unix cpan testmatrix url annocpan anno
-bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix cpan testmatrix url
+annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata
+placeholders
 
 =head1 NAME
 
@@ -229,7 +227,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.914
+version 0.915
 
 =head1 SYNOPSIS
 
@@ -562,7 +560,7 @@ progress on the request by the system.
 
 L<https://github.com/rwstauner/Dist-Metadata>
 
-  git clone https://github.com/rwstauner/Dist-Metadata
+  git clone https://github.com/rwstauner/Dist-Metadata.git
 
 =head1 AUTHOR
 
