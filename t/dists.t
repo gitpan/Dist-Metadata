@@ -36,6 +36,22 @@ foreach my $test  (
   ],
   [
     [
+      metafile_incomplete =>
+      'Dist-Metadata-Test-MetaFile-Incomplete-2.1',
+    ],
+    {
+      name     => 'Dist-Metadata-Test-MetaFile-Incomplete',
+      version  => '2.1',
+      provides => {
+        'Dist::Metadata::Test::MetaFile::Incomplete' => {
+          file    => 'lib/Dist/Metadata/Test/MetaFile/Incomplete.pm',
+          version => '2.1',
+        },
+      },
+    },
+  ],
+  [
+    [
       nometafile =>
       'Dist-Metadata-Test-NoMetaFile-0.1',
     ],
@@ -57,7 +73,7 @@ foreach my $test  (
   [
     [
       subdir =>
-      'Dist-Metadata-Test-SubDir-1.5.tar.gz',
+      'Dist-Metadata-Test-SubDir-1.5',
       'subdir',
     ],
     {
@@ -105,16 +121,15 @@ foreach my $test  (
 
   my ($key, $file, $dir) = @$dists;
   
-  if ( !$dir ) {
-    ($file, $dir) = ("$file.tar.gz", $file);
-  }
+  $dir ||= $file;
   $_ = "corpus/$_" for ($file, $dir);
 
   $_ = file($root, $_)->stringify
     for @$dists;
 
   foreach my $args (
-    [file => $file],
+    [file => "$file.tar.gz"],
+    [file => "$file.zip"],
     [dir  => $dir],
     [struct => { files => $structs->{$key} }],
   ){

@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 {
-  $Dist::Metadata::VERSION = '0.915';
+  $Dist::Metadata::VERSION = '0.920';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -56,8 +56,8 @@ sub dist {
       $dist = Dist::Metadata::Dir->new(dir => $dir);
     }
     elsif ( my $file = $self->{file} ){
-      require Dist::Metadata::Tar;
-      $dist = Dist::Metadata::Tar->new(file => $file);
+      require Dist::Metadata::Archive;
+      $dist = Dist::Metadata::Archive->new(file => $file);
     }
     else {
       # new() checks for one and dies without so we shouldn't get here
@@ -152,6 +152,7 @@ sub load_meta {
   my $dist  = $self->dist;
   my @files = $dist->list_files;
   my ( $meta, $metafile );
+  my $default_meta = $self->determine_metadata;
 
   # prefer json file (spec v2)
   if ( $metafile = first { m#^META\.json$# } @files ) {
@@ -163,7 +164,16 @@ sub load_meta {
   }
   # no META file found in dist
   else {
-    $meta = $self->meta_from_struct( $self->determine_metadata );
+    $meta = $self->meta_from_struct( $default_meta );
+  }
+
+  {
+    # always inlude (never index) the default no_index dirs
+    my $dir = ($meta->{no_index} ||= {})->{directory} ||= [];
+    my %seen = map { ($_ => 1) } @$dir;
+    unshift @$dir,
+      grep { !$seen{$_}++ }
+          @{ $default_meta->{no_index}->{directory} };
   }
 
   # Something has to be indexed, so if META has no (or empty) 'provides'
@@ -227,7 +237,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.915
+version 0.920
 
 =head1 SYNOPSIS
 

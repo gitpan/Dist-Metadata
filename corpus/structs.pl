@@ -89,11 +89,78 @@ version: \'2.2\'
 }
 
 ',
-    'Dist-Metadata-Test-MetaFile-2.2/README' => 'This "dist" is for testing the Tar implementation of Dist::Metadata.
+    'Dist-Metadata-Test-MetaFile-2.2/README' => 'This "dist" is for testing Dist::Metadata.
+'
+  },
+  'metafile_incomplete' => {
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/lib/Dist/Metadata/Test/MetaFile/Incomplete.pm' => 'package Dist::Metadata::Test::MetaFile::Incomplete;
+# ABSTRACT: Just a file to be indexed
+
+our $VERSION = \'2.1\';
+',
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/README' => 'This "dist" is for testing Dist::Metadata.
+',
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/META.yml' => '---
+abstract: Fake dist for testing metadata determination
+author:
+- Randy Stauner <rwstauner@cpan.org>
+dynamic_config: 0
+generated_by: hand
+license:
+- perl_5
+meta-spec:
+  url: http://search.cpan.org/perldoc?CPAN::Meta::Spec
+  version: \'2\'
+name: Dist-Metadata-Test-MetaFile-Incomplete
+no_index:
+  directory:
+  - examples
+  - share
+  - xt
+provides: {}
+release_status: stable
+version: \'2.2\'
+',
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/inc/NotThis.pm' => 'package NotThis;
+# ABSTRACT: Not to be indexed
+1;
+',
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/t/lib/Never.pm' => 'package Never;
+# ABSTRACT: Never index this
+
+1;
+',
+    'Dist-Metadata-Test-MetaFile-Incomplete-2.1/META.json' => '{
+   "abstract" : "Fake dist for testing metadata determination",
+   "author" : [
+      "Randy Stauner <rwstauner@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "hand",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Dist-Metadata-Test-MetaFile-Incomplete",
+   "no_index" : {
+      "directory" : [
+         "examples",
+         "share",
+         "xt"
+      ]
+   },
+   "provides" : {},
+   "release_status" : "stable",
+   "version" : "2.1"
+}
+
 '
   },
   'nometafile' => {
-    'Dist-Metadata-Test-NoMetaFile-0.1/README' => 'This "dist" is for testing the Tar implementation of Dist::Metadata.
+    'Dist-Metadata-Test-NoMetaFile-0.1/README' => 'This "dist" is for testing Dist::Metadata.
 ',
     'Dist-Metadata-Test-NoMetaFile-0.1/lib/Dist/Metadata/Test/NoMetaFile/PM.pm' => 'package Dist::Metadata::Test::NoMetaFile::PM;
 # ABSTRACT: Just a file to be indexed
@@ -117,7 +184,7 @@ our $VERSION = \'3.3\';
 
 our $VERSION = \'3.25\';
 ',
-    'README' => 'This "dist" is for testing the Tar implementation of Dist::Metadata.
+    'README' => 'This "dist" is for testing Dist::Metadata.
 '
   },
   'subdir' => {
@@ -131,7 +198,7 @@ our $VERSION = \'1.1\';
 
 our $VERSION = \'1.0\';
 ',
-    'Dist-Metadata-Test-SubDir-1.5/README' => 'This "dist" is for testing the Tar implementation of Dist::Metadata.
+    'Dist-Metadata-Test-SubDir-1.5/README' => 'This "dist" is for testing Dist::Metadata.
 '
   }
 };

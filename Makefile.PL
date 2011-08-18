@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
   'NAME' => 'Dist::Metadata',
   'PREREQ_PM' => {
     'Archive::Tar' => '1',
+    'Archive::Zip' => '1.30',
     'CPAN::DistnameInfo' => '0.12',
     'CPAN::Meta' => '2.1',
     'Carp' => '0',
@@ -41,7 +42,7 @@ my %WriteMakefileArgs = (
     'constant' => '0',
     'parent' => '0'
   },
-  'VERSION' => '0.915',
+  'VERSION' => '0.920',
   'test' => {
     'TESTS' => 't/*.t'
   }

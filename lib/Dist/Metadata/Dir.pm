@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 {
-  $Dist::Metadata::Dir::VERSION = '0.915';
+  $Dist::Metadata::Dir::VERSION = '0.920';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -96,13 +96,20 @@ sub find_files {
 
 
 sub physical_directory {
-  my ($self) = @_;
+  my ($self, @files) = @_;
 
+  # TODO: return absolute_path?
+  my @parts = $self->{dir};
   # go into root dir if there is one
-  return $self->path_class_dir->new($self->{dir}, $self->{root})->stringify
-    if $self->{root};
+  push @parts, $self->root
+    if $self->root;
 
-  return $self->{dir};
+  my $dir = $self->path_class_dir->new(@parts)->absolute;
+
+  return $dir->stringify unless wantarray;
+
+  return map { $_->stringify }
+    ($dir, map { $dir->file( $_ ) } @files);
 }
 
 1;
@@ -119,7 +126,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.915
+version 0.920
 
 =head1 SYNOPSIS
 

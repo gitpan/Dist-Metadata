@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 {
-  $Dist::Metadata::Dist::VERSION = '0.915';
+  $Dist::Metadata::Dist::VERSION = '0.920';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -63,10 +63,10 @@ sub determine_packages {
   my ($self, @files) = @_;
 
   my $determined = try {
-    my @dirfiles = $self->physical_directory(@files);
+    my @dir_and_files = $self->physical_directory(@files);
 
     # return
-    $self->packages_from_directory(@dirfiles);
+    $self->packages_from_directory(@dir_and_files);
   }
   catch {
     carp("Error determining packages: $_[0]");
@@ -105,7 +105,7 @@ sub extract_into {
     push(@disk_files, $full_path);
   }
 
-  return ($dir, @disk_files);
+  return (wantarray ? ($dir, @disk_files) : $dir);
 }
 
 
@@ -346,7 +346,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.915
+version 0.920
 
 =head1 SYNOPSIS
 
@@ -399,25 +399,31 @@ and uses L<Module::Metadata> to discover package names and versions.
 
 =head2 extract_into
 
-  my ($ddir, @dfiles) = $dist->extract_into($dir, @files);
+  $ddir = $dist->extract_into($dir);
+  ($ddir, @dfiles) = $dist->extract_into($dir, @files);
 
 Extracts the specified files (or all files if not specified)
 into the specified directory.
 
-Returns a list of the directory
+In list context this returns a list of the directory
 (which may be a subdirectory of the C<$dir> passed in)
 and the files extracted (in native OS (on-disk) format).
+
+In scalar context just the directory is returned.
 
 =head2 file_content
 
 Returns the content for the specified file from the dist.
-Must be defined by subclasses.
+
+This B<must> be defined by subclasses.
 
 =head2 find_files
 
 Determine the files contained in the dist.
 
 This is called from L</list_files> and cached on the object.
+
+This B<must> be defined by subclasses.
 
 =head2 file_spec
 
@@ -493,13 +499,19 @@ B<TODO>: This should probably be customizable.
 
 =head2 physical_directory
 
-  $dir = $dist->physical_directory(@files);
+  $dir = $dist->physical_directory();
+  ($dir, @dir_files) = $dist->physical_directory(@files);
 
 Returns the path to a physical directory on the disk
-where the specified files can be found.
+where the specified files (if any) can be found.
 
 For in-memory formats this will make a temporary directory
 and write the specified files (or all files) into it.
+
+The return value is the same as L</extract_into>:
+In scalar context the path to the directory is returned.
+In list context the (possibly adjusted) paths to any specified files
+are appended to the return value.
 
 =head2 remove_root_dir
 

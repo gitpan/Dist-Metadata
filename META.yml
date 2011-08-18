@@ -33,21 +33,28 @@ no_index:
 provides:
   Dist::Metadata:
     file: lib/Dist/Metadata.pm
-    version: 0.915
+    version: 0.920
+  Dist::Metadata::Archive:
+    file: lib/Dist/Metadata/Archive.pm
+    version: 0.920
   Dist::Metadata::Dir:
     file: lib/Dist/Metadata/Dir.pm
-    version: 0.915
+    version: 0.920
   Dist::Metadata::Dist:
     file: lib/Dist/Metadata/Dist.pm
-    version: 0.915
+    version: 0.920
   Dist::Metadata::Struct:
     file: lib/Dist/Metadata/Struct.pm
-    version: 0.915
+    version: 0.920
   Dist::Metadata::Tar:
     file: lib/Dist/Metadata/Tar.pm
-    version: 0.915
+    version: 0.920
+  Dist::Metadata::Zip:
+    file: lib/Dist/Metadata/Zip.pm
+    version: 0.920
 requires:
   Archive::Tar: 1
+  Archive::Zip: 1.30
   CPAN::DistnameInfo: 0.12
   CPAN::Meta: 2.1
   Carp: 0
@@ -66,7 +73,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Metadata
   homepage: https://github.com/rwstauner/Dist-Metadata
   repository: https://github.com/rwstauner/Dist-Metadata.git
-version: 0.915
+version: 0.920
 x_Dist_Zilla:
   plugins:
     -
@@ -116,7 +123,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Prepender
       name: '@Author::RWSTAUNER/Prepender'
-      version: 1.103470
+      version: 1.112280
     -
       class: Dist::Zilla::Plugin::PodWeaver
       name: '@Author::RWSTAUNER/PodWeaver'

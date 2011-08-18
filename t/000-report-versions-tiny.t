@@ -49,6 +49,7 @@ sub pmver {
 }
 
 eval { $v .= pmver('Archive::Tar','1') };
+eval { $v .= pmver('Archive::Zip','1.30') };
 eval { $v .= pmver('CPAN::DistnameInfo','0.12') };
 eval { $v .= pmver('CPAN::Meta','2.1') };
 eval { $v .= pmver('Carp','any version') };

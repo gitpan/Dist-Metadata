@@ -21,13 +21,14 @@ my %module_build_args = (
     'Randy Stauner <rwstauner@cpan.org>'
   ],
   'dist_name' => 'Dist-Metadata',
-  'dist_version' => '0.915',
+  'dist_version' => '0.920',
   'license' => 'perl',
   'module_name' => 'Dist::Metadata',
   'recommends' => {},
   'recursive_test_files' => 1,
   'requires' => {
     'Archive::Tar' => '1',
+    'Archive::Zip' => '1.30',
     'CPAN::DistnameInfo' => '0.12',
     'CPAN::Meta' => '2.1',
     'Carp' => '0',
