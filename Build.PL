@@ -6,45 +6,47 @@ use Module::Build 0.3601;
 
 
 my %module_build_args = (
-  'build_requires' => {
-    'File::Spec' => '0',
-    'Module::Build' => '0.3601',
-    'Test::Fatal' => '0',
-    'Test::MockObject' => '1.09',
-    'Test::More' => '0.96'
+  "build_requires" => {
+    "File::Spec" => 0,
+    "Module::Build" => "0.3601",
+    "Test::Fatal" => 0,
+    "Test::MockObject" => "1.09",
+    "Test::More" => "0.96"
   },
-  'configure_requires' => {
-    'Module::Build' => '0.3601'
+  "configure_requires" => {
+    "Module::Build" => "0.3601"
   },
-  'dist_abstract' => 'Information about a perl module distribution',
-  'dist_author' => [
-    'Randy Stauner <rwstauner@cpan.org>'
+  "dist_abstract" => "Information about a perl module distribution",
+  "dist_author" => [
+    "Randy Stauner <rwstauner\@cpan.org>"
   ],
-  'dist_name' => 'Dist-Metadata',
-  'dist_version' => '0.920',
-  'license' => 'perl',
-  'module_name' => 'Dist::Metadata',
-  'recommends' => {},
-  'recursive_test_files' => 1,
-  'requires' => {
-    'Archive::Tar' => '1',
-    'Archive::Zip' => '1.30',
-    'CPAN::DistnameInfo' => '0.12',
-    'CPAN::Meta' => '2.1',
-    'Carp' => '0',
-    'File::Basename' => '0',
-    'File::Find' => '0',
-    'File::Spec::Native' => '1.002',
-    'File::Temp' => '0.19',
-    'List::Util' => '0',
-    'Module::Metadata' => '0',
-    'Path::Class' => '0.24',
-    'Try::Tiny' => '0.09',
-    'constant' => '0',
-    'parent' => '0',
-    'perl' => '5.006'
+  "dist_name" => "Dist-Metadata",
+  "dist_version" => "0.921",
+  "license" => "perl",
+  "module_name" => "Dist::Metadata",
+  "recommends" => {},
+  "recursive_test_files" => 1,
+  "requires" => {
+    "Archive::Tar" => 1,
+    "Archive::Zip" => "1.30",
+    "CPAN::DistnameInfo" => "0.12",
+    "CPAN::Meta" => "2.1",
+    "Carp" => 0,
+    "File::Basename" => 0,
+    "File::Find" => 0,
+    "File::Spec::Native" => "1.002",
+    "File::Temp" => "0.19",
+    "List::Util" => 0,
+    "Module::Metadata" => 0,
+    "Path::Class" => "0.24",
+    "Try::Tiny" => "0.09",
+    "constant" => 0,
+    "parent" => 0,
+    "perl" => "5.006",
+    "strict" => 0,
+    "warnings" => 0
   },
-  'script_files' => []
+  "script_files" => []
 );
 
 

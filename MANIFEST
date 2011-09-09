@@ -53,6 +53,7 @@ t/dir.t
 t/dists.t
 t/file_spec.t
 t/load_meta.t
+t/no_index.t
 t/package_versions.t
 t/struct.t
 t/tar.t

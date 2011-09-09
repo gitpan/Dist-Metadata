@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 {
-  $Dist::Metadata::Dist::VERSION = '0.920';
+  $Dist::Metadata::Dist::VERSION = '0.921';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -257,6 +257,17 @@ sub path_class_dir  { $_[0]->{path_class_dir}  ||= 'Path::Class::Dir'  }
 sub path_class_file { $_[0]->{path_class_file} ||= 'Path::Class::File' }
 
 
+sub path_classify_dir  {
+  my ($self, $dir) = @_;
+  $self->path_class_dir->new_foreign($self->file_spec, $dir)
+}
+
+sub path_classify_file {
+  my ($self, $file) = @_;
+  $self->path_class_file->new_foreign($self->file_spec, $file)
+}
+
+
 sub perl_files {
   return
     grep { /\.pm$/ }
@@ -346,7 +357,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.920
+version 0.921
 
 =head1 SYNOPSIS
 
@@ -489,6 +500,16 @@ Returns the class name used for L<Path::Class::Dir> objects.
 =head2 path_class_file
 
 Returns the class name used for L<Path::Class::File> objects.
+
+=head2 path_classify_dir
+
+This is a shortcut for returning an object representing the provided
+dir utilizing L</path_class_dir> and L</file_spec>.
+
+=head2 path_classify_file
+
+This is a shortcut for returning an object representing the provided
+file utilizing L</path_class_file> and L</file_spec>.
 
 =head2 perl_files
 

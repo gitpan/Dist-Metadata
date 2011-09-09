@@ -9,42 +9,44 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Information about a perl module distribution',
-  'AUTHOR' => 'Randy Stauner <rwstauner@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'File::Spec' => '0',
-    'ExtUtils::MakeMaker' => '6.30',
-    'Test::Fatal' => '0',
-    'Test::MockObject' => '1.09',
-    'Test::More' => '0.96'
+  "ABSTRACT" => "Information about a perl module distribution",
+  "AUTHOR" => "Randy Stauner <rwstauner\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "File::Spec" => 0,
+    "Module::Build" => "0.3601",
+    "Test::Fatal" => 0,
+    "Test::MockObject" => "1.09",
+    "Test::More" => "0.96"
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "CONFIGURE_REQUIRES" => {
+    "Module::Build" => "0.3601"
   },
-  'DISTNAME' => 'Dist-Metadata',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Dist::Metadata',
-  'PREREQ_PM' => {
-    'Archive::Tar' => '1',
-    'Archive::Zip' => '1.30',
-    'CPAN::DistnameInfo' => '0.12',
-    'CPAN::Meta' => '2.1',
-    'Carp' => '0',
-    'File::Basename' => '0',
-    'File::Find' => '0',
-    'File::Spec::Native' => '1.002',
-    'File::Temp' => '0.19',
-    'List::Util' => '0',
-    'Module::Metadata' => '0',
-    'Path::Class' => '0.24',
-    'Try::Tiny' => '0.09',
-    'constant' => '0',
-    'parent' => '0'
+  "DISTNAME" => "Dist-Metadata",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Dist::Metadata",
+  "PREREQ_PM" => {
+    "Archive::Tar" => 1,
+    "Archive::Zip" => "1.30",
+    "CPAN::DistnameInfo" => "0.12",
+    "CPAN::Meta" => "2.1",
+    "Carp" => 0,
+    "File::Basename" => 0,
+    "File::Find" => 0,
+    "File::Spec::Native" => "1.002",
+    "File::Temp" => "0.19",
+    "List::Util" => 0,
+    "Module::Metadata" => 0,
+    "Path::Class" => "0.24",
+    "Try::Tiny" => "0.09",
+    "constant" => 0,
+    "parent" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '0.920',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.921",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

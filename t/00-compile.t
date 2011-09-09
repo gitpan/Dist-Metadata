@@ -31,6 +31,12 @@ if ( -d 'bin' ) {
         return unless -f;
         my $found = $File::Find::name;
         # nothing to skip
+        open my $FH, '<', $_ or do {
+          note( "Unable to open $found in ( $! ), skipping" );
+          return;
+        };
+        my $shebang = <$FH>;
+        return unless $shebang =~ /^#!.*?\bperl\b\s*$/;
         push @scripts, $found;
       },
       'bin',
@@ -42,7 +48,7 @@ $plan ? (plan tests => $plan) : (plan skip_all => "no tests to run");
 
 {
     # fake home for cpan-testers
-     local $ENV{HOME} = tempdir( CLEANUP => 1 );
+    # no fake requested ## local $ENV{HOME} = tempdir( CLEANUP => 1 );
 
     like( qx{ $^X -Ilib -e "require $_; print '$_ ok'" }, qr/^\s*$_ ok/s, "$_ loaded ok" )
         for sort @modules;

@@ -70,6 +70,8 @@ eval { $v .= pmver('Test::More','0.96') };
 eval { $v .= pmver('Try::Tiny','0.09') };
 eval { $v .= pmver('constant','any version') };
 eval { $v .= pmver('parent','any version') };
+eval { $v .= pmver('strict','any version') };
+eval { $v .= pmver('warnings','any version') };
 
 
 
