@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Tar;
 {
-  $Dist::Metadata::Tar::VERSION = '0.921';
+  $Dist::Metadata::Tar::VERSION = '0.922';
 }
 BEGIN {
   $Dist::Metadata::Tar::AUTHORITY = 'cpan:RWSTAUNER';
@@ -60,13 +60,15 @@ __END__
 
 =for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Metadata::Tar - Enable Dist::Metadata for tar files
 
 =head1 VERSION
 
-version 0.921
+version 0.922
 
 =head1 SYNOPSIS
 

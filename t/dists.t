@@ -5,6 +5,7 @@ use Path::Class 0.24 qw(file);
 
 my $mod = 'Dist::Metadata';
 eval "require $mod" or die $@;
+$Dist::Metadata::VERSION ||= 0; # quiet warnings
 
 # we may need to prepend $FindBin::Bin
 my $root = 'corpus';
@@ -66,6 +67,22 @@ foreach my $test  (
         'Dist::Metadata::Test::NoMetaFile::PM' => {
           file    => 'lib/Dist/Metadata/Test/NoMetaFile/PM.pm',
           version => '0.1',
+        },
+      },
+    },
+  ],
+  [
+    [
+      nometafile_dev_release =>
+      'Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1',
+    ],
+    {
+      name     => 'Dist-Metadata-Test-NoMetaFile-DevRelease',
+      version  => '0.1_1',
+      provides => {
+        'Dist::Metadata::Test::NoMetaFile::DevRelease' => {
+          file    => 'lib/Dist/Metadata/Test/NoMetaFile/DevRelease.pm',
+          version => '0.1_1',
         },
       },
     },

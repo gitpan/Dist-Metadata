@@ -13,13 +13,12 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Randy Stauner <rwstauner\@cpan.org>",
   "BUILD_REQUIRES" => {
     "File::Spec" => 0,
-    "Module::Build" => "0.3601",
     "Test::Fatal" => 0,
     "Test::MockObject" => "1.09",
     "Test::More" => "0.96"
   },
   "CONFIGURE_REQUIRES" => {
-    "Module::Build" => "0.3601"
+    "ExtUtils::MakeMaker" => "6.30"
   },
   "DISTNAME" => "Dist-Metadata",
   "EXE_FILES" => [],
@@ -44,7 +43,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.921",
+  "VERSION" => "0.922",
   "test" => {
     "TESTS" => "t/*.t"
   }

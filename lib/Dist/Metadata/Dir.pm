@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 {
-  $Dist::Metadata::Dir::VERSION = '0.921';
+  $Dist::Metadata::Dir::VERSION = '0.922';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -120,13 +120,15 @@ __END__
 
 =for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.921
+version 0.922
 
 =head1 SYNOPSIS
 

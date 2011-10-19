@@ -1,4 +1,3 @@
-Build.PL
 Changes
 LICENSE
 MANIFEST
@@ -27,6 +26,10 @@ corpus/Dist-Metadata-Test-NoMetaFile-0.1.zip
 corpus/Dist-Metadata-Test-NoMetaFile-0.1/README
 corpus/Dist-Metadata-Test-NoMetaFile-0.1/lib/Dist/Metadata/Test/NoMetaFile.pm
 corpus/Dist-Metadata-Test-NoMetaFile-0.1/lib/Dist/Metadata/Test/NoMetaFile/PM.pm
+corpus/Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1.tar.gz
+corpus/Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1.zip
+corpus/Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1/README
+corpus/Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1/lib/Dist/Metadata/Test/NoMetaFile/DevRelease.pm
 corpus/Dist-Metadata-Test-SubDir-1.5.tar.gz
 corpus/Dist-Metadata-Test-SubDir-1.5.zip
 corpus/noroot.tar.gz
@@ -38,6 +41,7 @@ corpus/structs.pl
 corpus/subdir/Dist-Metadata-Test-SubDir-1.5/README
 corpus/subdir/Dist-Metadata-Test-SubDir-1.5/lib/Dist/Metadata/Test/SubDir.pm
 corpus/subdir/Dist-Metadata-Test-SubDir-1.5/lib/Dist/Metadata/Test/SubDir/PM.pm
+dist.ini
 lib/Dist/Metadata.pm
 lib/Dist/Metadata/Archive.pm
 lib/Dist/Metadata/Dir.pm

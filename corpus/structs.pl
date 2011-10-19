@@ -7,6 +7,15 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 $Dist::Metadata::Test::Structs = {
+  'nometafile_dev_release' => {
+    'Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1/README' => 'This "dist" is for testing Dist::Metadata.
+',
+    'Dist-Metadata-Test-NoMetaFile-DevRelease-0.1_1/lib/Dist/Metadata/Test/NoMetaFile/DevRelease.pm' => 'package Dist::Metadata::Test::NoMetaFile::DevRelease;
+# ABSTRACT: Fake dist for testing metadata determination
+
+our $VERSION = \'0.1_1\';
+'
+  },
   'metafile' => {
     'Dist-Metadata-Test-MetaFile-2.2/lib/Dist/Metadata/Test/MetaFile.pm' => 'package Dist::Metadata::Test::MetaFile;
 # ABSTRACT: Fake dist for testing metadata determination

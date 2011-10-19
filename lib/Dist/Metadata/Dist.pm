@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 {
-  $Dist::Metadata::Dist::VERSION = '0.921';
+  $Dist::Metadata::Dist::VERSION = '0.922';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -351,13 +351,15 @@ __END__
 
 =for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.921
+version 0.922
 
 =head1 SYNOPSIS
 

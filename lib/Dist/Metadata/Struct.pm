@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 {
-  $Dist::Metadata::Struct::VERSION = '0.921';
+  $Dist::Metadata::Struct::VERSION = '0.922';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -65,13 +65,15 @@ __END__
 
 =for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.921
+version 0.922
 
 =head1 SYNOPSIS
 

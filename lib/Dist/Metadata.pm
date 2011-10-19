@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 {
-  $Dist::Metadata::VERSION = '0.921';
+  $Dist::Metadata::VERSION = '0.922';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -83,7 +83,12 @@ sub default_metadata {
       url     => 'http://search.cpan.org/perldoc?CPAN::Meta::Spec',
     },
     name           => UNKNOWN,
-    release_status => 'stable',
+
+    # strictly speaking, release_status is also required but
+    # CPAN::Meta will figure it out based on the version number.  if
+    # we were to set it explicitly, then we would first need to
+    # examine the version number for '_' or 'TRIAL' or 'RC' etc.
+
     version        => 0,
 
     # optional
@@ -237,13 +242,15 @@ __END__
 annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata
 placeholders
 
+=encoding utf-8
+
 =head1 NAME
 
 Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.921
+version 0.922
 
 =head1 SYNOPSIS
 
