@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata;
 {
-  $Dist::Metadata::VERSION = '0.922';
+  $Dist::Metadata::VERSION = '0.923';
 }
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
@@ -147,10 +147,27 @@ sub determine_packages {
 
   my $packages = $self->dist->determine_packages(@files);
 
-  # remove any packages that should not be indexed
+
   foreach my $pack ( keys %$packages ) {
-    delete $packages->{$pack}
-      if !$meta->should_index_package($pack);
+
+    # Remove any packages that should not be indexed
+    if ( !$meta->should_index_package($pack) ) {
+      delete $packages->{$pack};
+      next;
+    }
+
+    unless( $self->{include_inner_packages} ){
+      # PAUSE only considers packages that match the basename of the
+      # containing file.  For example, file Foo.pm may only contain a
+      # package that matches /\bFoo$/.  This is what PAUSE calls a
+      # "simile".  All other packages in the file will be ignored.
+
+      # capture file basename (without the extension)
+      my ($base) = ($packages->{$pack}->{file} =~ m!([^/]+)\.pm(?:\.PL)?$!);
+      # remove if file didn't match regexp or package doesn't match basename
+      delete $packages->{$pack}
+        if !$base || $pack !~ m{\b\Q$base\E$};
+    }
   }
 
   return $packages;
@@ -238,11 +255,11 @@ sub package_versions {
 __END__
 =pod
 
+=encoding utf-8
+
 =for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix cpan testmatrix url
 annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata
-placeholders
-
-=encoding utf-8
+placeholders metacpan
 
 =head1 NAME
 
@@ -250,7 +267,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.922
+version 0.923
 
 =head1 SYNOPSIS
 
@@ -347,6 +364,17 @@ C<version> - dist version
 
 C<determine_packages> - boolean to indicate whether dist should be searched
 for packages if no META file is found.  Defaults to true.
+
+=item *
+
+C<include_inner_packages> - When determining provided packages
+the default behavior is to only include packages that match the name
+of the file that defines them (like C<Foo::Bar> matches C<*/Bar.pm>).
+This way only modules that can be loaded (via C<use> or C<require>)
+will be returned (and "inner" packages will be ignored).
+This mimics the behavior of PAUSE.
+Set this to true to include any "inner" packages provided by the dist
+(that are not otherwise excluded by another mechanism (such as C<no_index>)).
 
 =back
 

@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 {
-  $Dist::Metadata::Dir::VERSION = '0.922';
+  $Dist::Metadata::Dir::VERSION = '0.923';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -118,9 +118,9 @@ sub physical_directory {
 __END__
 =pod
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
-
 =encoding utf-8
+
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
 =head1 NAME
 
@@ -128,7 +128,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.922
+version 0.923
 
 =head1 SYNOPSIS
 

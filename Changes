@@ -1,5 +1,15 @@
 Revision history for Dist-Metadata
 
+0.923     2012-06-19T03:13:55Z
+
+  - By default, when determining packages, filter out packages
+    that don't match the file name (ones that can't be loaded via use/require).
+    This mimics the behavior of PAUSE.
+    If you want the old behavior of including "inner" packages in the meta
+    "provides" set "include_inner_packages" to true in the constructor.
+    Thanks to Jeffrey Ryan Thalhammer for finding and fixing this
+    (and including tests)!
+
 0.922     2011-10-19T22:30:53Z
 
   - Let CPAN::Meta set release_status instead of defaulting to 'stable'.

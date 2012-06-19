@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 {
-  $Dist::Metadata::Struct::VERSION = '0.922';
+  $Dist::Metadata::Struct::VERSION = '0.923';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -63,9 +63,9 @@ sub find_files {
 __END__
 =pod
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
-
 =encoding utf-8
+
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
 
 =head1 NAME
 
@@ -73,7 +73,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.922
+version 0.923
 
 =head1 SYNOPSIS
 

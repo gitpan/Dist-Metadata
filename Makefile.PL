@@ -12,7 +12,9 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Information about a perl module distribution",
   "AUTHOR" => "Randy Stauner <rwstauner\@cpan.org>",
   "BUILD_REQUIRES" => {
+    "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
+    "File::Spec::Functions" => 0,
     "Test::Fatal" => 0,
     "Test::MockObject" => "1.09",
     "Test::More" => "0.96"
@@ -43,7 +45,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.922",
+  "VERSION" => "0.923",
   "test" => {
     "TESTS" => "t/*.t"
   }

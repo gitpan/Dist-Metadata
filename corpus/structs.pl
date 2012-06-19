@@ -16,6 +16,21 @@ $Dist::Metadata::Test::Structs = {
 our $VERSION = \'0.1_1\';
 '
   },
+  'index_like_pause' => {
+    'Dist-Metadata-Test-LikePause-0.1/README' => 'This "dist" is for testing Dist::Metadata.
+',
+    'Dist-Metadata-Test-LikePause-0.1/lib/Dist/Metadata/Test/LikePause.pm' => 'package Dist::Metadata::Test::LikePause;
+
+# ABSTRACT: Fake dist for testing metadata determination
+
+our $VERSION = \'0.1\';
+
+# This should be excluded unless "include_inner_packages" is true
+package ExtraPackage;
+
+our $VERSION = \'0.2\';
+'
+  },
   'metafile' => {
     'Dist-Metadata-Test-MetaFile-2.2/lib/Dist/Metadata/Test/MetaFile.pm' => 'package Dist::Metadata::Test::MetaFile;
 # ABSTRACT: Fake dist for testing metadata determination
