@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 {
-  $Dist::Metadata::Dir::VERSION = '0.923';
+  $Dist::Metadata::Dir::VERSION = '0.924';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -114,13 +114,13 @@ sub physical_directory {
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix checksum checksums
 
 =head1 NAME
 
@@ -128,7 +128,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.923
+version 0.924
 
 =head1 SYNOPSIS
 
@@ -188,4 +188,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

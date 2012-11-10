@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 {
-  $Dist::Metadata::Struct::VERSION = '0.923';
+  $Dist::Metadata::Struct::VERSION = '0.924';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -59,13 +59,13 @@ sub find_files {
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix checksum checksums
 
 =head1 NAME
 
@@ -73,7 +73,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.923
+version 0.924
 
 =head1 SYNOPSIS
 
@@ -133,4 +133,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

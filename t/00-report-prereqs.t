@@ -22,6 +22,9 @@ my @modules = qw(
   CPAN::DistnameInfo
   CPAN::Meta
   Carp
+  Digest
+  Digest::MD5
+  Digest::SHA
   ExtUtils::MakeMaker
   File::Basename
   File::Find
@@ -34,9 +37,13 @@ my @modules = qw(
   List::Util
   Module::Metadata
   Path::Class
+  Pod::Coverage::TrustPod
+  Test::CPAN::Meta
   Test::Fatal
   Test::MockObject
   Test::More
+  Test::Pod
+  Test::Pod::Coverage
   Try::Tiny
   constant
   parent
@@ -74,7 +81,7 @@ for my $mod ( @modules ) {
     push @reports, ["missing", $mod];
   }
 }
-    
+
 if ( @reports ) {
   my $vl = max map { length $_->[0] } @reports;
   my $ml = max map { length $_->[1] } @reports;

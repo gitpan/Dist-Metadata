@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Archive;
 {
-  $Dist::Metadata::Archive::VERSION = '0.923';
+  $Dist::Metadata::Archive::VERSION = '0.924';
 }
 BEGIN {
   $Dist::Metadata::Archive::AUTHORITY = 'cpan:RWSTAUNER';
@@ -80,13 +80,13 @@ sub read_archive {
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix checksum checksums
 
 =head1 NAME
 
@@ -94,7 +94,7 @@ Dist::Metadata::Archive - Base class for Dist::Metadata archive files
 
 =head1 VERSION
 
-version 0.923
+version 0.924
 
 =head1 SYNOPSIS
 
@@ -173,4 +173,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

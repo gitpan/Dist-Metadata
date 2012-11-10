@@ -12,8 +12,10 @@ use warnings;
 
 package Dist::Metadata;
 {
-  $Dist::Metadata::VERSION = '0.923';
+  $Dist::Metadata::VERSION = '0.924';
 }
+# git description: v0.923-9-g3ca5d9b
+
 BEGIN {
   $Dist::Metadata::AUTHORITY = 'cpan:RWSTAUNER';
 }
@@ -76,7 +78,7 @@ sub default_metadata {
     abstract       => UNKNOWN,
     author         => [],
     dynamic_config => 0,
-    generated_by   => ( ref($self) || $self ) . ' version ' . $self->VERSION,
+    generated_by   => ( ref($self) || $self ) . ' version ' . ( $self->VERSION || 0 ),
     license        => ['unknown'], # this 'unknown' comes from CPAN::Meta::Spec
     'meta-spec'    => {
       version => '2',
@@ -238,6 +240,34 @@ sub package_versions {
 }
 
 
+sub module_info {
+  my ($self, $opts) = @_;
+  my $provides = $opts->{provides} || $self->provides;
+  $provides = { %$provides }; # break reference
+
+  my $checksums = $opts->{checksum} || $opts->{digest} || [];
+  $checksums = [ $checksums ]
+    unless ref($checksums) eq 'ARRAY';
+
+  my $digest_cache = {};
+  foreach my $mod ( keys %$provides ){
+    my $data = { %{ $provides->{ $mod } } }; # break reference
+
+    foreach my $checksum ( @$checksums ){
+      $data->{ $checksum } =
+        $digest_cache->{ $data->{file} }->{ $checksum } ||=
+          $self->dist->file_checksum($data->{file}, $checksum);
+    }
+
+    # TODO: $opts->{callback}->($self, $mod, $data, sub { $self->dist->file_content($data->{file}) });
+
+    $provides->{ $mod } = $data;
+  }
+
+  return $provides;
+}
+
+
 {
   no strict 'refs'; ## no critic (NoStrict)
   foreach my $method ( qw(
@@ -251,15 +281,15 @@ sub package_versions {
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix cpan testmatrix url
-annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata
-placeholders metacpan
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix checksum checksums
+cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc
+mailto metadata placeholders metacpan
 
 =head1 NAME
 
@@ -267,7 +297,7 @@ Dist::Metadata - Information about a perl module distribution
 
 =head1 VERSION
 
-version 0.923
+version 0.924
 
 =head1 SYNOPSIS
 
@@ -441,6 +471,43 @@ This can also be called as a class method
 which will operate on a passed in hashref.
 
   $pv = Dist::Metadata->package_versions(\%provides);
+
+=head2 module_info
+
+Returns a hashref of meta data for each of the packages provided by this dist.
+
+The hashref starts with the same data as L</provides>
+but additional data can be added to the output by specifying options in a hashref:
+
+=over 4
+
+=item C<checksum>
+
+Use the specified algorithm to compute a hex digest of the file.
+The type you specify will be the key in the returned hashref.
+You can use an arrayref to specify more than one type.
+
+  $dm->module_info({checksum => ['sha256', 'md5']});
+  # returns:
+  {
+    'Mod::Name' => {
+      file    => 'lib/Mod/Name.pm',
+      version => '0.1',
+      md5     => '258e88dcbd3cd44d8e7ab43f6ecb6af0',
+      sha256  => 'f22136124cd3e1d65a48487cecf310771b2fd1e83dc032e3d19724160ac0ff71',
+    },
+  }
+
+See L<Dist::Metadata::Dist/file_checksum> for more information.
+
+=item C<provides>
+
+The default is to start with the hashref returned from L</provides>
+but you can pass in an alternate hashref using this key.
+
+=back
+
+Other options may be added in the future.
 
 =head1 INHERITED METHODS
 
@@ -625,4 +692,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

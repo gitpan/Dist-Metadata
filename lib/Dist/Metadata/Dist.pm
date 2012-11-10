@@ -11,7 +11,7 @@ use warnings;
 
 package Dist::Metadata::Dist;
 {
-  $Dist::Metadata::Dist::VERSION = '0.923';
+  $Dist::Metadata::Dist::VERSION = '0.924';
 }
 BEGIN {
   $Dist::Metadata::Dist::AUTHORITY = 'cpan:RWSTAUNER';
@@ -111,6 +111,22 @@ sub extract_into {
 
 sub file_content {
   croak q[Method 'file_content' not defined];
+}
+
+
+sub file_checksum {
+  my ($self, $file, $type) = @_;
+  $type ||= 'md5';
+
+  require Digest; # core
+
+  # md5 => MD5, sha256 => SHA-256
+  (my $impl = uc $type) =~ s/^(SHA|CRC)([0-9]+)$/$1-$2/;
+
+  my $digest = Digest->new($impl);
+
+  $digest->add( $self->file_content($file) );
+  return $digest->hexdigest;
 }
 
 
@@ -345,13 +361,13 @@ sub set_name_and_version {
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix
+=for :stopwords Randy Stauner ACKNOWLEDGEMENTS TODO dist dists dir unix checksum checksums
 
 =head1 NAME
 
@@ -359,7 +375,7 @@ Dist::Metadata::Dist - Base class for format-specific implementations
 
 =head1 VERSION
 
-version 0.923
+version 0.924
 
 =head1 SYNOPSIS
 
@@ -429,6 +445,20 @@ In scalar context just the directory is returned.
 Returns the content for the specified file from the dist.
 
 This B<must> be defined by subclasses.
+
+=head2 file_checksum
+
+  $dist->file_checksum('lib/Mod/Name.pm', 'sha256');
+
+Returns a checksum (hex digest) of the file content.
+
+The L<Digest> module is used to generate the checksums.
+The value specified should be one accepted by C<< Digest->new >>.
+A small effort is made to translate simpler names like
+C<md5> into C<MD5> and C<sha1> into C<SHA-1>
+(which are the names L<Digest> expects).
+
+If the type of checksum is not specified C<md5> will be used.
 
 =head2 find_files
 
@@ -595,4 +625,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
