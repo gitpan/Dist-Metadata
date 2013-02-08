@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Tar;
 {
-  $Dist::Metadata::Tar::VERSION = '0.924';
+  $Dist::Metadata::Tar::VERSION = '0.925';
 }
 BEGIN {
   $Dist::Metadata::Tar::AUTHORITY = 'cpan:RWSTAUNER';
@@ -68,7 +68,7 @@ Dist::Metadata::Tar - Enable Dist::Metadata for tar files
 
 =head1 VERSION
 
-version 0.924
+version 0.925
 
 =head1 SYNOPSIS
 

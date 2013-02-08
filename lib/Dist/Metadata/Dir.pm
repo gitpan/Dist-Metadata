@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Dir;
 {
-  $Dist::Metadata::Dir::VERSION = '0.924';
+  $Dist::Metadata::Dir::VERSION = '0.925';
 }
 BEGIN {
   $Dist::Metadata::Dir::AUTHORITY = 'cpan:RWSTAUNER';
@@ -128,7 +128,7 @@ Dist::Metadata::Dir - Enable Dist::Metadata for a directory
 
 =head1 VERSION
 
-version 0.924
+version 0.925
 
 =head1 SYNOPSIS
 

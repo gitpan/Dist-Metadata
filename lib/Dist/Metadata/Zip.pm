@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Zip;
 {
-  $Dist::Metadata::Zip::VERSION = '0.924';
+  $Dist::Metadata::Zip::VERSION = '0.925';
 }
 BEGIN {
   $Dist::Metadata::Zip::AUTHORITY = 'cpan:RWSTAUNER';
@@ -68,7 +68,7 @@ Dist::Metadata::Zip - Enable Dist::Metadata for zip files
 
 =head1 VERSION
 
-version 0.924
+version 0.925
 
 =head1 SYNOPSIS
 

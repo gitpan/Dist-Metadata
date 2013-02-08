@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     "CPAN::DistnameInfo" => "0.12",
     "CPAN::Meta" => "2.1",
     "Carp" => 0,
-    "Digest" => 1,
+    "Digest" => "1.03",
     "Digest::MD5" => 2,
     "Digest::SHA" => 5,
     "File::Basename" => 0,
@@ -48,7 +48,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.924",
+  "VERSION" => "0.925",
   "test" => {
     "TESTS" => "t/*.t"
   }

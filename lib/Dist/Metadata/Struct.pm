@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Struct;
 {
-  $Dist::Metadata::Struct::VERSION = '0.924';
+  $Dist::Metadata::Struct::VERSION = '0.925';
 }
 BEGIN {
   $Dist::Metadata::Struct::AUTHORITY = 'cpan:RWSTAUNER';
@@ -73,7 +73,7 @@ Dist::Metadata::Struct - Enable Dist::Metadata for a data structure
 
 =head1 VERSION
 
-version 0.924
+version 0.925
 
 =head1 SYNOPSIS
 

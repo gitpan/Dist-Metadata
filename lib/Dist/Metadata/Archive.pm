@@ -12,7 +12,7 @@ use warnings;
 
 package Dist::Metadata::Archive;
 {
-  $Dist::Metadata::Archive::VERSION = '0.924';
+  $Dist::Metadata::Archive::VERSION = '0.925';
 }
 BEGIN {
   $Dist::Metadata::Archive::AUTHORITY = 'cpan:RWSTAUNER';
@@ -94,7 +94,7 @@ Dist::Metadata::Archive - Base class for Dist::Metadata archive files
 
 =head1 VERSION
 
-version 0.924
+version 0.925
 
 =head1 SYNOPSIS
 
